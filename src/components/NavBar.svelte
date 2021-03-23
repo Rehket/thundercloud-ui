@@ -1,5 +1,7 @@
 <script>
     import Login from "./Login.svelte"
+    import Register from "./Register.svelte";
+
     let showLogin = false;
 </script>
 
@@ -45,9 +47,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
+                        <Register/>
                         <Login/>
                     </div>
                 </div>

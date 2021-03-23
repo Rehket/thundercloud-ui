@@ -12,8 +12,7 @@
         emailRegex.lastIndex = 0;
         emailLooksValid = (emailRegex.test(email) && emailRegex.lastIndex === email.length);
         if(emailLooksValid){
-            console.log("dispatched enevt");
-            dispatch('emailupdate', {
+            dispatch('email_update', {
                 email: email
             });
         }
@@ -28,7 +27,6 @@
                placeholder="your-email@here.com"
                id="email-input"
                bind:value={email}
-               he
         >
         <span class="icon is-small is-left">
             <i class="fa fa-user"></i>

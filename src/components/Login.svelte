@@ -1,13 +1,13 @@
 <script>
 
-    import EmailInput from './inpEmail.svelte';
-    import PasswordInput from './inpPassword.svelte';
+    import EmailInput from './InputEmail.svelte';
+    import PasswordInput from './InputPassword.svelte';
 
     let showLogin = false;
     let email = ""
     let password = ""
     let emailIsValid = false;
-
+    let rememberMe = false;
     function validate() {
         console.log("I'm the validate() function")
     }
@@ -16,20 +16,14 @@
         showLogin = !showLogin;
     }
 
-    function validateAndSend(){
-
-    }
-
-    function submitLoginRequest(){
-        console.log(email);
-    }
-
     function handleEmailUpdate(event) {
         email = event.detail.email;
+        console.log(email);
     }
 
     function handlePasswordUpdate(event) {
         password = event.detail.password;
+        console.log(password);
     }
 
     function handleFocusOut(event){
@@ -45,7 +39,7 @@
 
 <div class="dropdown is-right {showLogin ? 'is-active' : ''}"  >
     <div class="dropdown-trigger">
-        <button class="button" on:click|preventDefault={toggleLogin}  aria-haspopup="true" aria-controls="dropdown-menu">
+        <button class="button mx-1" on:click|preventDefault={toggleLogin}  aria-haspopup="true" aria-controls="dropdown-menu">
             <span>Login</span>
             <span class="icon is-small">
         <i class="fa fa-user" aria-hidden="true"></i>
@@ -60,11 +54,11 @@
                 <form on:submit|preventDefault={validate} style="width: 500px" id="login-form">
 
 
-                    <EmailInput on:emailupdate={handleEmailUpdate}/>
-                    <PasswordInput/>
+                    <EmailInput on:email_update={handleEmailUpdate}/>
+                    <PasswordInput on:password_update={handlePasswordUpdate}/>
                     <div class="field">
                         <label for="remember-me" class="checkbox">Remember Me</label>
-                        <input type="checkbox" name="remember-me" id="remember-me">
+                        <input type="checkbox" name="remember-me" id="remember-me" bind:value={rememberMe}>
                     </div>
                     <button type="submit" class="button is-success">
                         Login

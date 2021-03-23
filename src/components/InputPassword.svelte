@@ -7,7 +7,7 @@
     let passwordLookSafe;
     let hasTouched = false;
 
-    function emailUpdate(){
+    function passwordUpdate(){
         hasTouched =true;
         passwordRegex.lastIndex = 0;
         passwordLookSafe = (passwordRegex.test(password) && passwordRegex.lastIndex === password.length);
@@ -19,7 +19,7 @@
     }
 </script>
 
-<div class="field" on:focusout={emailUpdate}>
+<div class="field" on:focusout={passwordUpdate}>
     <label for="password-input" class="label">
         Password
     </label>
